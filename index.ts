@@ -15,4 +15,5 @@ savings.owner = 'Savings Account 1 Owner';
 savings.deposit(100);
 savings.withdraw(50);
 savings.transfer(10, checking);
-console.log(savings.balance)
+console.log(savings.balance);
+console.log(checking.balance);
