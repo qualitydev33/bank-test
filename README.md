@@ -28,5 +28,14 @@ Requirements
 
 ```bash
 npm install
+```
+
+For test files, please run following cmd:
+```bash
 npm run test
+```
+
+To run index.ts, please run down cmd:
+```bash
+npm run start
 ```
