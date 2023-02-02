@@ -1,3 +1,4 @@
+import { AMOUNT_MIN_ERROR_MSG, TRANSFER_MAX_ERROR_MSG, WITHDRAW_MAX_ERROR_MSG } from "../constants/account";
 import { getBankAccount, getReceiverBankAccount } from "./setup";
 
 describe("Bank Account Checking",  () => {
@@ -14,9 +15,9 @@ describe("Bank Account Checking",  () => {
     let senderBalanceBeforeDeposit = sender.balance;
     let receiverBalanceBeforeTransfer = receiver.balance;
 
-    expect(() => sender.deposit(-100)).toThrow("The deposit amount must be larger than 0.");
-    expect(() => sender.withdraw(sender.balance + 1)).toThrow("The withdraw amount must be less or equal than the balance.");
-    expect(() => sender.transfer(sender.balance + 1, receiver)).toThrow("The transfer amount must be larger or equal than balance.");
+    expect(() => sender.deposit(-100)).toThrow(AMOUNT_MIN_ERROR_MSG);
+    expect(() => sender.withdraw(sender.balance + 1)).toThrow(WITHDRAW_MAX_ERROR_MSG);
+    expect(() => sender.transfer(sender.balance + 1, receiver)).toThrow(TRANSFER_MAX_ERROR_MSG);
 
     sender.deposit(500);
     expect(sender.balance - senderBalanceBeforeDeposit).toEqual(500);

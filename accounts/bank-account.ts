@@ -1,3 +1,4 @@
+import { AMOUNT_MIN_ERROR_MSG, TRANSFER_MAX_ERROR_MSG, WITHDRAW_MAX_ERROR_MSG } from "../constants/account";
 import { Bank } from "./bank";
 
 export class BankAccount extends Bank {
@@ -19,23 +20,25 @@ export class BankAccount extends Bank {
   }
 
   deposit(amount: number): number {
-    if (amount <= 0)  throw new Error("The deposit amount must be larger than 0.");
+    if (amount <= 0)  throw new Error(AMOUNT_MIN_ERROR_MSG);
     this.balance = this.balance + amount;
     return this.balance;
   }
 
   withdraw(amount: number): number {
-    if (amount < this._balance ){
-      this.balance = this.balance - amount;
-      return this.balance;
+    if (amount <= 0) {
+      throw new Error(AMOUNT_MIN_ERROR_MSG);
     }
-    else {
-        throw new Error("The withdraw amount must be less or equal than the balance.");
+    if (amount > this.balance) {
+      throw new Error(WITHDRAW_MAX_ERROR_MSG);
     }
+    this.balance = this.balance - amount;
+    return this.balance;
   }
 
   transfer(amount: number, account: BankAccount) {
-    if (amount > this.balance) throw new Error("The transfer amount must be larger or equal than balance.");
+    if (amount <= 0) throw new Error(AMOUNT_MIN_ERROR_MSG);
+    if (amount > this.balance) throw new Error(TRANSFER_MAX_ERROR_MSG);
     account.balance = account.balance + amount;
     this.balance = this.balance - amount;
   }

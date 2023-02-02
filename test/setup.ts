@@ -24,7 +24,3 @@ export const getIndividualAccount = () => {
   account.owner = "Test Individual Owner";
   return account;
 }
-
-// module.exports = {
-//   getFakeBankAccount
-// };
