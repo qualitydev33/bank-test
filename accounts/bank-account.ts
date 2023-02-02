@@ -26,12 +26,8 @@ export class BankAccount extends Bank {
   }
 
   withdraw(amount: number): number {
-    if (amount <= 0) {
-      throw new Error(AMOUNT_MIN_ERROR_MSG);
-    }
-    if (amount > this.balance) {
-      throw new Error(WITHDRAW_MAX_ERROR_MSG);
-    }
+    if (amount <= 0) throw new Error(AMOUNT_MIN_ERROR_MSG);
+    if (amount > this.balance) throw new Error(WITHDRAW_MAX_ERROR_MSG);
     this.balance = this.balance - amount;
     return this.balance;
   }
