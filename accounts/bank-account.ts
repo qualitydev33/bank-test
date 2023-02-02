@@ -1,6 +1,7 @@
-export class BankAccount {
+import { Bank } from "./bank";
+
+export class BankAccount extends Bank {
   private _balance: number = 0;
-  private _name: string;
   private _owner: string;
 
   get owner(): string {
@@ -15,13 +16,6 @@ export class BankAccount {
   }
   set balance(balance: number) {
     this._balance = balance;
-  }
-  
-  get name(): string {
-    return this._name;
-  }
-  set name(name: string) {
-    this._name = name;
   }
 
   deposit(amount: number): number {
