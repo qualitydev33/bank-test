@@ -16,6 +16,8 @@ describe("Bank Account Checking",  () => {
     let receiverBalanceBeforeTransfer = receiver.balance;
 
     expect(() => sender.deposit(-100)).toThrow(AMOUNT_MIN_ERROR_MSG);
+    expect(() => sender.withdraw(-100)).toThrow(AMOUNT_MIN_ERROR_MSG);
+    expect(() => sender.transfer(-100, receiver)).toThrow(AMOUNT_MIN_ERROR_MSG);
     expect(() => sender.withdraw(sender.balance + 1)).toThrow(WITHDRAW_MAX_ERROR_MSG);
     expect(() => sender.transfer(sender.balance + 1, receiver)).toThrow(TRANSFER_MAX_ERROR_MSG);
 
