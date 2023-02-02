@@ -1,6 +1,6 @@
 import { getBankAccount, getReceiverBankAccount } from "./setup";
 
-describe("BankAccount Checking",  () => {
+describe("Bank Account Checking",  () => {
   test('Account owner, name and balance validation', () => {
     let account = getBankAccount();
     expect(account.balance).toBeGreaterThanOrEqual(0);
